@@ -20,7 +20,16 @@
                             @csrf
                             <div class="form-group">
                                 <label for="title">Tiêu đề</label>
-                                <input type="text" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="title">
+                                <input type="text" value="{{isset($category) ? $category->title : ''}}" onkeyup="ChangeToSlug()" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="slug">
+                                <label for="slug">Slug</label>
+                                <input 
+                                    type="slug" 
+                                    name="slug" 
+                                    title="Slug" 
+                                    class="form-control" 
+                                    placeholder="Nhập vào dữ liệu..." 
+                                    id="convert_slug"
+                                >                                
                                 <label for="description">Mô tả</label>
                                 <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description"></textarea>
                                 <label for="status">Trạng thái:</label>
@@ -38,7 +47,16 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="title">Tiêu đề</label>
-                                <input value="{{ $category->title }}" type="text" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="title">
+                                <input type="text" value="{{isset($category) ? $category->title : ''}}" onkeyup="ChangeToSlug()" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="slug">
+                                <label for="slug">Slug</label>
+                                <input 
+                                    type="slug" 
+                                    name="slug" 
+                                    title="Slug" 
+                                    class="form-control" 
+                                    placeholder="Nhập vào dữ liệu..." 
+                                    id="convert_slug"
+                                >                                
                                 <label for="description">Mô tả</label>
                                 <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description">{{ $category->description }}</textarea>
                                 <label for="status">Trạng thái:</label>
@@ -63,10 +81,11 @@
         <thead>
             <tr>
                 <th scope="col">STT</th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Active</th>
-                <th scope="col">Manage</th>
+                <th scope="col">Tiêu đề</th>
+                <th scope="col">Mô tả</th>
+                <th scope="col">Slug</th>
+                <th scope="col">Trạng thái</th>
+                <th scope="col">Quản lý</th>
             </tr>
         </thead>
         <tbody>
@@ -75,6 +94,7 @@
                 <th scope="row">{{ $key + 1 }}</th>
                 <td>{{ $cate->title }}</td>
                 <td>{{ $cate->description }}</td>
+                <td>{{ $cate->slug }}</td>
                 <td>
                     {{ $cate->status ? 'Hiển thị' : 'Không hiển thị' }}
                 </td>

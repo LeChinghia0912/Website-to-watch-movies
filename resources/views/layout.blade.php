@@ -99,28 +99,36 @@
                   <div class="menu-menu_1-container">
                      <ul id="menu-menu_1" class="nav navbar-nav navbar-left">
                         <li class="current-menu-item active"><a title="Trang Chủ" href="{{route('homepage')}}">Trang Chủ</a></li>
-                        <li class="mega"><a title="Phim Mới" href="{{route('category')}}">Phim Mới</a></li>
-                        <!-- <li class="mega dropdown">
+                        <li class="mega dropdown">
+                           <a title="Thể Loại" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Thể Loại <span class="caret"></span></a>
+                           <ul role="menu" class=" dropdown-menu">
+                              @foreach($genre as $key => $gen)
+                                 <li><a title="{{$gen->title}}" href="{{route('genre', $gen->slug)}}">{{$gen->title}}</a></li>
+                              @endforeach
+                           </ul>
+                        </li>
+                        <li class="mega dropdown">
+                           <a title="Quốc Gia" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Quốc Gia <span class="caret"></span></a>
+                           <ul role="menu" class=" dropdown-menu">
+                              @foreach($country as $key => $count)
+                                 <li><a title="{{$count->title}}" href="{{route('country', $count->slug)}}">{{$count->title}}</a></li>
+                              @endforeach
+                           </ul>
+                        </li>
+
+                        @foreach($category as $key => $cate)
+                           <li class="mega"><a title="{{$cate->title}}" href="{{route('category', $cate->slug)}}">{{$cate->title}}</a></li>
+                        @endforeach
+
+                        <li class="mega dropdown">
                            <a title="Năm" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Năm <span class="caret"></span></a>
                            <ul role="menu" class=" dropdown-menu">
                               <li><a title="Phim 2020" href="danhmuc.php">Phim 2020</a></li>
                               <li><a title="Năm 2019" href="danhmuc.php">Năm 2019</a></li>
                               <li><a title="Năm 2018" href="danhmuc.php">Năm 2018</a></li>
                            </ul>
-                        </li> -->
-                        <li class="mega dropdown">
-                           <a title="Thể Loại" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Thể Loại <span class="caret"></span></a>
-                           <ul role="menu" class=" dropdown-menu">
-                              <li><a title="Tâm Lý" href="{{route('genre')}}">Tâm Lý</a></li>
-                           </ul>
                         </li>
-                        <li class="mega dropdown">
-                           <a title="Quốc Gia" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Quốc Gia <span class="caret"></span></a>
-                           <ul role="menu" class=" dropdown-menu">
-                              <li><a title="Việt nam" href="{{route('country')}}">Việt nam</a></li>
-                             
-                           </ul>
-                        </li>
+                        
                        
                      </ul>
                   </div>
