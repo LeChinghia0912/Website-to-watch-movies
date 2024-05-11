@@ -37,6 +37,8 @@
                                     <option value="1">Hiển thị</option>
                                     <option value="0">Không hiển thị</option>
                                 </select>
+                                <label>Position</label>
+                                <input type="text" name="position" title="position" class="form-control">
                             </div>
                             <button type="submit" class="btn btn-primary">Thêm dữ liệu</button>
                         </form>
@@ -64,6 +66,8 @@
                                     <option value="1" {{ $category->status == 1 ? 'selected' : '' }}>Hiển thị</option>
                                     <option value="0" {{ $category->status == 0 ? 'selected' : '' }}>Không hiển thị</option>
                                 </select>
+                                <label>Position</label>
+                                <input type="text" name="position" title="position" class="form-control" value="{{isset($category) ? $category->position : ''}}">
                             </div>
                             @if(!isset($category))
                                 <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
@@ -88,10 +92,10 @@
                 <th scope="col">Quản lý</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="order_position">
             @foreach ($list as $key => $cate)
-            <tr>
-                <th scope="row">{{ $key + 1 }}</th>
+            <tr id="{{ $cate->id }}">
+                <th scope="row">{{ $key }}</th>
                 <td>{{ $cate->title }}</td>
                 <td>{{ $cate->description }}</td>
                 <td>{{ $cate->slug }}</td>

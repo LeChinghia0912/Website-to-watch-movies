@@ -99,6 +99,11 @@
                   <div class="menu-menu_1-container">
                      <ul id="menu-menu_1" class="nav navbar-nav navbar-left">
                         <li class="current-menu-item active"><a title="Trang Chủ" href="{{route('homepage')}}">Trang Chủ</a></li>
+
+                        @foreach($category as $key => $cate)
+                           <li class="mega"><a title="{{$cate->title}}" href="{{route('category', $cate->slug)}}">{{$cate->title}}</a></li>
+                        @endforeach
+                        
                         <li class="mega dropdown">
                            <a title="Thể Loại" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Thể Loại <span class="caret"></span></a>
                            <ul role="menu" class=" dropdown-menu">
@@ -115,11 +120,6 @@
                               @endforeach
                            </ul>
                         </li>
-
-                        @foreach($category as $key => $cate)
-                           <li class="mega"><a title="{{$cate->title}}" href="{{route('category', $cate->slug)}}">{{$cate->title}}</a></li>
-                        @endforeach
-
                         <li class="mega dropdown">
                            <a title="Năm" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Năm <span class="caret"></span></a>
                            <ul role="menu" class=" dropdown-menu">

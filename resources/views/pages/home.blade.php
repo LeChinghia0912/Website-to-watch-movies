@@ -38,7 +38,7 @@
             </div>
             <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
 
-               @foreach($category as $key => $cate_home)
+               @foreach($cateory_home as $key => $cate_home)
 
                <section id="halim-advanced-widget-2">
                   <div class="section-heading">
@@ -47,10 +47,12 @@
                      </a>
                   </div>
                   <div id="halim-advanced-widget-2-ajax-box" class="halim_box">
+                     @foreach($cate_home->movie->take(12) as $key => $mov)
+
                      <article class="col-md-3 col-sm-3 col-xs-6 thumb grid-item post-37606">
                         <div class="halim-item">
                            <a class="halim-thumb" href="chitiet.php">
-                              <figure><img class="lazy img-responsive" src="https://scontent.fvii2-4.fna.fbcdn.net/v/t39.30808-6/438217494_874187754721351_5035416088886460900_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGEib5leddK031FCxLaKsnR4CgSPtKMflLgKBI-0ox-Una5ce0MKyZFjffxgzgJWWSp2C0BvMqWPMW974y1VvyM&_nc_ohc=qdLGtPs0MAAQ7kNvgHclvvc&_nc_ht=scontent.fvii2-4.fna&oh=00_AfBMqsqlcWWPa1wkf4OT-5viZ1TopfNouIitEtwHQYX27Q&oe=663936D8" alt="BẠN CÙNG PHÒNG CỦA TÔI LÀ GUMIHO" title="BẠN CÙNG PHÒNG CỦA TÔI LÀ GUMIHO"></figure>
+                              <figure><img class="lazy img-responsive" src="{{asset('uploads/movie/' .$mov->image)}}" title="{{$mov->image}}"></figure>
                               <span class="status">TẬP 15</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
                               <div class="icon_overlay"></div>
                               <div class="halim-post-title-box">
@@ -62,6 +64,7 @@
                            </a>
                         </div>
                      </article>
+                     @endforeach
                   </div>
                </section>
                <div class="clearfix"></div>
