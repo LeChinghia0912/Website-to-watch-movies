@@ -17,7 +17,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //
+        $list = Movie::with('category', 'genre', 'country')->orderBy('id', 'DESC')->get();
+        return view('admin.movie.index', compact('list'));
     }
 
     /**
@@ -28,8 +29,8 @@ class MovieController extends Controller
         $category = Category::pluck('title', 'id');
         $genre = Genre::pluck('title', 'id');
         $country = Country::pluck('title', 'id');
-        $list = Movie::with('category', 'genre', 'country')->orderBy('id', 'DESC')->get();
-        return view('admin.movie.form', compact('category', 'genre', 'country', 'list'));
+        $phim_hot = Movie::pluck('title', 'id');
+        return view('admin.movie.form', compact('category', 'genre', 'country', 'phim_hot'));
     }
 
     /**
@@ -40,6 +41,7 @@ class MovieController extends Controller
         $data = $request->all();
         $movie = new Movie();
         $movie->title = $data['title'];
+        $movie->phim_hot = $data['phim_hot'];
         $movie->slug = $data['slug'];
         $movie->description = $data['description'];
         $movie->status = $data['status'];
@@ -69,6 +71,7 @@ class MovieController extends Controller
         $data = $request->all();
         $movie = new Movie();
         $movie->title = $data['title'];
+        $movie->phim_hot = $data['phim_hot'];
         $movie->slug = $data['slug'];
         $movie->description = $data['description'];
         $movie->status = $data['status'];
@@ -112,6 +115,7 @@ class MovieController extends Controller
 
         $movie =  Movie::find($id);
         $movie->title = $data['title'];
+        $movie->phim_hot = $data['phim_hot'];
         $movie->slug = $data['slug'];
         $movie->description = $data['description'];
         $movie->status = $data['status'];
