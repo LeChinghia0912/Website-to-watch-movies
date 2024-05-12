@@ -29,6 +29,14 @@
                                     class="form-control" 
                                     placeholder="Nhập vào dữ liệu..." 
                                     id="slug">
+                                    <label>Tên tiếng anh</label>
+                                    <input 
+                                        type="text" 
+                                        value="{{isset($movie) ? $movie->name_eng: ''}}" 
+                                        name="name_eng" 
+                                        class="form-control" 
+                                        placeholder="Nhập vào dữ liệu..." 
+                                        id="name_eng">
                                 <label for="slug">Slug</label>
                                 <input 
                                     type="slug" 
@@ -81,6 +89,8 @@
                             <div class="form-group">
                                 <label for="title">Tiêu đề</label>
                                 <input type="text" value="{{isset($movie) ? $movie->title : ''}} " onkeyup="ChangeToSlug()" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="slug">
+                                <label for="title">Tên tiếng anh</label>
+                                <input type="text" value="{{isset($movie) ? $movie->name_eng : ''}} "  name="name_eng" class="form-control" placeholder="Nhập vào dữ liệu..." id="name_eng">
                                 <label for="slug">Slug</label>
                                 <input 
                                     type="slug" 

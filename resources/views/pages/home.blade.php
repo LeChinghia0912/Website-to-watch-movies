@@ -13,9 +13,8 @@
                </div>
                <div id="halim_related_movies-2" class="owl-carousel owl-theme related-film">
 
-
-
                   @foreach ($phimhot as $key => $hot)
+                  
                   <article class="thumb grid-item post-38498">
                      <div class="halim-item">
                         <a class="halim-thumb" href="{{route('movie')}}" title="{{$hot->title}}">
@@ -25,7 +24,7 @@
                            <div class="halim-post-title-box">
                               <div class="halim-post-title ">
                                  <p class="entry-title">{{$hot->title}}</p>
-                                 <p class="original_title">Monkey King: The One And Only</p>
+                                 <p class="original_title">{{$hot->name_eng}}</p>
                               </div>
                            </div>
                         </a>
@@ -34,8 +33,6 @@
 
                   @endforeach
 
-                    
-                 
                </div>
                <script>
                   jQuery(document).ready(function($) {				
@@ -68,8 +65,8 @@
                               <div class="icon_overlay"></div>
                               <div class="halim-post-title-box">
                                  <div class="halim-post-title ">
-                                    <p class="entry-title">BẠN CÙNG PHÒNG CỦA TÔI LÀ GUMIHO</p>
-                                    <p class="original_title">My Roommate Is a Gumiho</p>
+                                    <p class="entry-title">{{$mov->title}}</p>
+                                    <p class="original_title">{{$mov->name_eng}}</p>
                                  </div>
                               </div>
                            </a>

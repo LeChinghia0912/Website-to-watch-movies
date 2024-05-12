@@ -26,7 +26,8 @@ class IndexController extends Controller
         $genre = Genre::orderBy('id', 'DESC')->get();
         $country = Country::orderBy('id', 'DESC')->get();
         $cate_slug = Category::where('slug', $slug)->first();
-        return view('pages.category', compact('category', 'genre', 'country', 'cate_slug'));
+        $movie = Movie::where('category_id', $cate_slug->id)->paginate(40);
+        return view('pages.category', compact('category', 'genre', 'country', 'cate_slug', 'movie'));
     }
 
     public function genre($slug){
@@ -34,7 +35,8 @@ class IndexController extends Controller
         $genre = Genre::orderBy('id', 'DESC')->get();
         $country = Country::orderBy('id', 'DESC')->get();
         $genre_slug = Genre::where('slug', $slug)->first();
-        return view('pages.genre', compact('category', 'genre', 'country', 'genre_slug'));
+        $movie = Movie::where('genre_id', $genre_slug->id)->paginate(40);
+        return view('pages.genre', compact('category', 'genre', 'country', 'genre_slug', 'movie'));
     }
 
     public function country($slug){
@@ -42,7 +44,8 @@ class IndexController extends Controller
         $genre = Genre::orderBy('id', 'DESC')->get();
         $country = Country::orderBy('id', 'DESC')->get();
         $country_slug = Country::where('slug', $slug)->first();
-        return view('pages.country', compact('category', 'genre', 'country', 'country_slug'));
+        $movie = Movie::where('country_id', $country_slug->id)->paginate(40);
+        return view('pages.country', compact('category', 'genre', 'country', 'country_slug', 'movie'));
     }
 
     public function movie(){
