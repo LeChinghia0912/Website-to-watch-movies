@@ -28,7 +28,8 @@
                                     name="title" 
                                     class="form-control" 
                                     placeholder="Nhập vào dữ liệu..." 
-                                    id="slug">
+                                    id="slug"
+                                    required>
                                     <label>Tên tiếng anh</label>
                                     <input 
                                         type="text" 
@@ -36,7 +37,8 @@
                                         name="name_eng" 
                                         class="form-control" 
                                         placeholder="Nhập vào dữ liệu..." 
-                                        id="name_eng">
+                                        id="name_eng"
+                                        required>
                                 <label for="slug">Slug</label>
                                 <input 
                                     type="slug" 
@@ -45,9 +47,10 @@
                                     class="form-control" 
                                     placeholder="Nhập vào dữ liệu..." 
                                     id="convert_slug"
+                                    required
                                 >
                                 <label for="description">Mô tả</label>
-                                <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description"></textarea>
+                                <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description" required></textarea>
                                 <label for="status">Trạng thái:</label>
                                 <select name="status" id="status" class="form-control">
                                     <option value="1">Hiển thị</option>
@@ -88,9 +91,9 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="title">Tiêu đề</label>
-                                <input type="text" value="{{isset($movie) ? $movie->title : ''}} " onkeyup="ChangeToSlug()" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="slug">
+                                <input type="text" value="{{isset($movie) ? $movie->title : ''}} " onkeyup="ChangeToSlug()" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="slug" required>
                                 <label for="title">Tên tiếng anh</label>
-                                <input type="text" value="{{isset($movie) ? $movie->name_eng : ''}} "  name="name_eng" class="form-control" placeholder="Nhập vào dữ liệu..." id="name_eng">
+                                <input type="text" value="{{isset($movie) ? $movie->name_eng : ''}} "  name="name_eng" class="form-control" placeholder="Nhập vào dữ liệu..." id="name_eng" required>
                                 <label for="slug">Slug</label>
                                 <input 
                                     type="slug" 
@@ -99,9 +102,10 @@
                                     class="form-control" 
                                     placeholder="Nhập vào dữ liệu..." 
                                     id="convert_slug"
+                                    required
                                 >                                              
                                 <label for="description">Mô tả</label>
-                                <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description">{{ $movie->description }}</textarea>
+                                <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description" required>{{ $movie->description }}</textarea>
                                 <label for="status">Trạng thái:</label>
                                 <select name="status" id="status" class="form-control">
                                     <option value="1" {{ $movie->status == 1 ? 'selected' : '' }}>Hiển thị</option>

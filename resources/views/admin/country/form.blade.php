@@ -20,7 +20,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="title">Tiêu đề</label>
-                                <input type="text" value="{{isset($country) ? $country->title : ''}}" onkeyup="ChangeToSlug()" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="slug">
+                                <input type="text" value="{{isset($country) ? $country->title : ''}}" onkeyup="ChangeToSlug()" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="slug" required>
                                 <label for="slug">Slug</label>
                                 <input 
                                     type="slug" 
@@ -29,9 +29,10 @@
                                     class="form-control" 
                                     placeholder="Nhập vào dữ liệu..." 
                                     id="convert_slug"
+                                    required
                                 >   
                                 <label for="description">Mô tả</label>
-                                <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description"></textarea>
+                                <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description" required></textarea>
                                 <label for="status">Trạng thái:</label>
                                 <select name="status" id="status" class="form-control">
                                     <option value="1">Hiển thị</option>
@@ -47,7 +48,7 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="title">Tiêu đề</label>
-                                <input type="text" value="{{isset($country) ? $country->title : ''}} " onkeyup="ChangeToSlug()" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="slug">
+                                <input type="text" value="{{isset($country) ? $country->title : ''}} " onkeyup="ChangeToSlug()" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="slug" required>
                                 <label for="slug">Slug</label>
                                 <input 
                                     type="slug" 
@@ -56,9 +57,10 @@
                                     class="form-control" 
                                     placeholder="Nhập vào dữ liệu..." 
                                     id="convert_slug"
+                                    required
                                 >                                   
                                 <label for="description">Mô tả</label>
-                                <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description">{{ $country->description }}</textarea>
+                                <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description" required>{{ $country->description }}</textarea>
                                 <label for="status">Trạng thái:</label>
                                 <select name="status" id="status" class="form-control">
                                     <option value="1" {{ $country->status == 1 ? 'selected' : '' }}>Hiển thị</option>

@@ -17,7 +17,7 @@
                   
                   <article class="thumb grid-item post-38498">
                      <div class="halim-item">
-                        <a class="halim-thumb" href="{{route('movie')}}" title="{{$hot->title}}">
+                        <a class="halim-thumb" href="{{route('movie', $hot->slug)}}" title="{{$hot->title}}">
                            <figure><img class="lazy img-responsive" src="{{asset('uploads/movie/' .$hot->image)}}" title="{{$hot->image}}"></figure>
                            <span class="status">HD</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
                            <div class="icon_overlay"></div>

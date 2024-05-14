@@ -20,7 +20,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="title">Tiêu đề</label>
-                                <input type="text" value="{{isset($category) ? $category->title : ''}}" onkeyup="ChangeToSlug()" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="slug">
+                                <input type="text" value="{{isset($category) ? $category->title : ''}}" onkeyup="ChangeToSlug()" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="slug" required>
                                 <label for="slug">Slug</label>
                                 <input 
                                     type="slug" 
@@ -29,16 +29,17 @@
                                     class="form-control" 
                                     placeholder="Nhập vào dữ liệu..." 
                                     id="convert_slug"
-                                >                                
+                                    required
+                                    >                                
                                 <label for="description">Mô tả</label>
-                                <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description"></textarea>
+                                <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description" required></textarea>
                                 <label for="status">Trạng thái:</label>
-                                <select name="status" id="status" class="form-control">
+                                <select name="status" id="status" class="form-control" required>
                                     <option value="1">Hiển thị</option>
                                     <option value="0">Không hiển thị</option>
                                 </select>
                                 <label>Position</label>
-                                <input type="text" name="position" title="position" class="form-control">
+                                <input type="text" name="position" title="position" class="form-control" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Thêm dữ liệu</button>
                         </form>
@@ -49,7 +50,7 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="title">Tiêu đề</label>
-                                <input type="text" value="{{isset($category) ? $category->title : ''}}" onkeyup="ChangeToSlug()" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="slug">
+                                <input type="text" value="{{isset($category) ? $category->title : ''}}" onkeyup="ChangeToSlug()" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="slug" required>
                                 <label for="slug">Slug</label>
                                 <input 
                                     type="slug" 
@@ -58,9 +59,10 @@
                                     class="form-control" 
                                     placeholder="Nhập vào dữ liệu..." 
                                     id="convert_slug"
+                                    required
                                 >                                
                                 <label for="description">Mô tả</label>
-                                <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description">{{ $category->description }}</textarea>
+                                <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description" required>{{ $category->description }}</textarea>
                                 <label for="status">Trạng thái:</label>
                                 <select name="status" id="status" class="form-control">
                                     <option value="1" {{ $category->status == 1 ? 'selected' : '' }}>Hiển thị</option>
