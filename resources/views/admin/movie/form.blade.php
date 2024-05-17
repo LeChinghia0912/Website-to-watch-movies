@@ -73,6 +73,20 @@
                                     <option value="1">Có</option>
                                     <option value="0">Không</option>
                                 </select>
+                                <label for="resolution">Định dạng</label>
+                                <select name="resolution" id="resolution" class="form-control" value="{{isset($movie) ? $movie->resolution: ''}}">
+                                    <option value="0">HD</option>
+                                    <option value="1">SD</option>
+                                    <option value="2">HDCam</option>
+                                    <option value="3">Cam</option>
+                                    <option value="4">FulHD</option>
+                                </select>
+                                <label for="subtitle">Phụ đề</label>
+                                <select name="subtitle" id="subtitle" class="form-control" value="{{isset($movie) ? $movie->subtitle: ''}}">
+                                    <option value="0">VietSub</option>
+                                    <option value="1">Thuyết Minh</option>
+                                    <option value="2">Phụ đề</option>
+                                </select>
                                 <label>Quốc gia</label>
                                 <select name="country_id" id="country_id" class="form-control" value="{{isset($movie) ? $movie->country: ''}}">
                                     @foreach($country as $countryId => $countryTitle)
@@ -127,6 +141,20 @@
                                 <select name="phim_hot" id="phim_hot" class="form-control">
                                     <option value="1" {{ $movie->phim_hot == 1 ? 'selected' : '' }}>Có</option>
                                     <option value="0" {{ $movie->phim_hot == 0 ? 'selected' : '' }}>Không</option>
+                                </select>
+                                <label>Định dạng</label>
+                                <select name="resolution" id="resolution" class="form-control">
+                                    <option value="0" {{ $movie->resolution == 0 ? 'selected' : '' }}>HD</option>
+                                    <option value="1" {{ $movie->resolution == 1 ? 'selected' : '' }}>SD</option>
+                                    <option value="2" {{ $movie->resolution == 2 ? 'selected' : '' }}>HDCam</option>
+                                    <option value="3" {{ $movie->resolution == 3 ? 'selected' : '' }}>Cam</option>
+                                    <option value="4" {{ $movie->resolution == 4 ? 'selected' : '' }}>FullHD</option>
+                                </select>
+                                <label>Định dạng</label>
+                                <select name="subtitle" id="subtitle" class="form-control">
+                                    <option value="0" {{ $movie->subtitle == 0 ? 'selected' : '' }}>VietSub</option>
+                                    <option value="1" {{ $movie->subtitle == 1 ? 'selected' : '' }}>Thuyết minh</option>
+                                    <option value="2" {{ $movie->subtitle == 2 ? 'selected' : '' }}>Phụ đề</option>
                                 </select>
                                 <label>Quốc gia</label>
                                 <select name="country_id" id="country_id" class="form-control" value="{{isset($movie) ? $movie->country: ''}}">

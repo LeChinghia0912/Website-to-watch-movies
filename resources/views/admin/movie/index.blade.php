@@ -17,7 +17,11 @@
                 <th scope="col">Danh mục</th>
                 <th scope="col">Thể loại</th>
                 <th scope="col">Phim HOT</th>
+                <th scope="col">Định dạng</th>
+                <th scope="col">Phụ đề</th>
                 <th scope="col">Quốc gia</th>
+                <th scope="col">Ngày tạo</th>
+                <th scope="col">Ngày cập nhật</th>
                 <th scope="col">Quản lý</th>
             </tr>
         </thead>
@@ -37,13 +41,16 @@
                 <td>{{ $cate->genre->title }}</td>
                 <td>
                     {{ $cate->phim_hot ? 'Có' : 'Không' }}
-                    {{-- @if ($cate->phim_hot == 0)
-                        Có
-                    @else
-                        Không
-                    @endif --}}
+                </td>
+                <td>
+                    {{ $cate->resolution == 0 ? 'HD' : ($cate->resolution == 1 ? 'SD' : ($cate->resolution == 2 ? 'HDCam' : ($cate->resolution == 3 ? 'Cam' : 'FullHD'))) }}
+                </td>
+                <td>
+                    {{ $cate->subtitle == 0 ? 'VietSub' : ($cate->subtitle == 1 ? 'Thuyết minh' : 'Phụ đề') }}
                 </td>
                 <td>{{ $cate->country->title }}</td>
+                <td>{{ $cate->ngaytao }}</td>
+                <td>{{ $cate->ngaycapnhat }}</td>
 
                 <td>
                     <!-- Nút Xóa -->

@@ -8,7 +8,7 @@ use App\Models\Movie;
 use App\Models\Category;
 use App\Models\Genre;
 use App\Models\Country;
-
+use Carbon\Carbon;
 
 class MovieController extends Controller
 {
@@ -43,12 +43,16 @@ class MovieController extends Controller
         $movie->title = $data['title'];
         $movie->name_eng = $data['name_eng'];
         $movie->phim_hot = $data['phim_hot'];
+        $movie->resolution = $data['resolution'];
+        $movie->subtitle = $data['subtitle'];
         $movie->slug = $data['slug'];
         $movie->description = $data['description'];
         $movie->status = $data['status'];
         $movie->category_id = $data['category_id'];
         $movie->genre_id = $data['genre_id'];
         $movie->country_id = $data['country_id'];
+        $movie->ngaytao = Carbon::now('Asia/Ho_Chi_Minh');
+        $movie->ngaycapnhat = Carbon::now('Asia/Ho_Chi_Minh');
         //thêm hình ảnh
         $get_image = $request->file('image');
 
@@ -118,6 +122,8 @@ class MovieController extends Controller
         $movie =  Movie::find($id);
         $movie->title = $data['title'];
         $movie->phim_hot = $data['phim_hot'];
+        $movie->resolution = $data['resolution'];
+        $movie->subtitle = $data['subtitle'];
         $movie->name_eng = $data['name_eng'];
         $movie->slug = $data['slug'];
         $movie->description = $data['description'];
@@ -125,12 +131,13 @@ class MovieController extends Controller
         $movie->category_id = $data['category_id'];
         $movie->genre_id = $data['genre_id'];
         $movie->country_id = $data['country_id'];
+        $movie->ngaycapnhat = Carbon::now('Asia/Ho_Chi_Minh');
         
         //thêm hình ảnh
         $get_image = $request->file('image');
 
         if($get_image){
-            if(!empty($movie->image)){
+            if(file_exists('uploads/movie/' .$movie->image)){
                 unlink('uploads/movie/' .$movie->image);
             }
             $get_name_image = $get_image->getClientOriginalName();
@@ -149,7 +156,7 @@ class MovieController extends Controller
     public function destroy(string $id)
     {
         $movie = Movie::find($id);
-        if(!empty($movie->image)){
+        if(file_exists('uploads/movie/' .$movie->image)){
             unlink('uploads/movie/' .$movie->image);
         }
         $movie->delete();
