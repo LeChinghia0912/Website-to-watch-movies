@@ -43,8 +43,31 @@
                               <h1 class="movie-title title-1" style="display:block;line-height:35px;margin-bottom: -14px;color: #ffed4d;text-transform: uppercase;font-size: 18px;">{{$movie->title}}</h1>
                               <h2 class="movie-title title-2" style="font-size: 12px;">{{$movie->name_eng}}</h2>
                               <ul class="list-info-group">
-                                 <li class="list-info-group-item"><span>Trạng Thái</span> : <span class="quality">HD</span><span class="episode">Vietsub</span></li>
-                                 <li class="list-info-group-item"><span>Thời lượng</span> : 133 Phút</li>
+                                 <li class="list-info-group-item"><span>Trạng Thái</span> : 
+                                    <span class="quality">
+                                       @if ($movie->resolution == 0)
+                                          HD
+                                       @elseif($movie->resolution == 1)
+                                          SD
+                                       @elseif($movie->resolution == 2)
+                                          HDCam
+                                       @elseif($movie->resolution == 3)
+                                          Cam                                 
+                                       @else
+                                          FullHD
+                                       @endif
+                                    </span>
+                                    <span class="episode">
+                                       @if ($movie->subtitle == 0)
+                                       VietSub
+                                       @elseif($movie->subtitle == 1)
+                                          Thuyết minh
+                                       @else
+                                          Phụ đề
+                                       @endif
+                                    </span>
+                                 </li>
+                                 <li class="list-info-group-item"><span>Thời lượng</span> : {{$movie->time}} Phút</li>
                                  <li class="list-info-group-item"><span>Danh mục</span> : 
                                     <a href="{{route('category', [$movie->category->slug])}}">{{$movie->category->title}}</a>
                                  </li>
@@ -86,7 +109,28 @@
                               <div class="halim-item">
                                  <a class="halim-thumb" href="{{route('movie', $hot->slug)}}" title="{{$hot->title}}">
                                     <figure><img class="lazy img-responsive" src="{{asset('uploads/movie/' .$hot->image)}}" title="{{$hot->image}}"></figure>
-                                    <span class="status">HD</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
+                                    <span class="status">
+                                       @if ($movie->resolution == 0)
+                                          HD
+                                       @elseif($movie->resolution == 1)
+                                          SD
+                                       @elseif($movie->resolution == 2)
+                                          HDCam
+                                       @elseif($movie->resolution == 3)
+                                          Cam                                 
+                                       @else
+                                          FullHD
+                                       @endif
+                                    </span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
+                                       @if ($movie->subtitle == 0)
+                                       VietSub
+                                       @elseif($movie->subtitle == 1)
+                                          Thuyết minh
+                                       @else
+                                          Phụ đề
+                                       @endif
+                                    </span>
+                                    </span> 
                                     <div class="icon_overlay"></div>
                                     <div class="halim-post-title-box">
                                        <div class="halim-post-title ">

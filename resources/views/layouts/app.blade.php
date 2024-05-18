@@ -94,6 +94,30 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select-year').change(function() {
+                var year = $(this).find(':selected').val();
+                var id_phim = $(this).attr('id');
+    
+                $.ajax({
+                    url: "{{ url('/update-year-phim') }}",
+                    method: "GET",
+                    data: { year: year, id_phim: id_phim },
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Thay đổi năm phim theo năm ' + year + ' thành công!');
+                        } else {
+                            alert('Đã có lỗi xảy ra, vui lòng thử lại!');
+                        }
+                    },
+                    error: function() {
+                        alert('Đã có lỗi xảy ra, vui lòng thử lại!');
+                    }
+                });
+            });
+        });
+    </script>
     <script type="text/javascript">
 
         $(document).ready(function(){

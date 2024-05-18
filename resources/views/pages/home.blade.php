@@ -96,7 +96,15 @@
                                     FullHD
                                  @endif
                               </span>
-                           <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
+                           <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
+                               @if ($hot->subtitle == 0)
+                                 VietSub
+                              @elseif($hot->subtitle == 1)
+                                    Thuyết minh
+                              @else
+                                 Phụ đề
+                              @endif
+                           </span> 
                               <div class="icon_overlay"></div>
                               <div class="halim-post-title-box">
                                  <div class="halim-post-title ">

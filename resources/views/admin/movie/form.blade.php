@@ -93,6 +93,8 @@
                                         <option value="{{$countryId}}">{{$countryTitle}}</option>
                                     @endforeach
                                 </select>
+                                <label>Thời lượng</label>
+                                <input type="text"  name="title" class="form-control" placeholder="Nhập vào dữ liệu..." required>
                                 <label>Hình ảnh minh họa</label>
                                 <input type="file" name="image" id="image" placeholder="hình ảnh" class="form-control">
                             </div>
@@ -162,6 +164,8 @@
                                         <option value="{{ $countryId }}" {{ isset($movie) && $movie->country_id == $countryId ? 'selected' : '' }}>{{ $countryTitle }}</option>
                                     @endforeach
                                 </select>
+                                <label for="time">Thời lượng</label>
+                                <input type="text" value="{{isset($movie) ? $movie->time : ''}} " name="time" class="form-control" placeholder="Nhập vào dữ liệu..." required>
                                 <label>Hình ảnh</label>
                                 @if($movie)
                                 <input type="file" name="image" id="image" placeholder="hình ảnh" class="form-control">

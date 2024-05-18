@@ -21,6 +21,16 @@ class MovieController extends Controller
         return view('admin.movie.index', compact('list'));
     }
 
+    public function update_year(Request $request)
+    {
+        $data = $request->all();
+        $movie = Movie::find($data['id_phim']);
+        $movie->year = $data['year'];
+        $movie->save();
+
+        return response()->json(['success' => true]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -51,8 +61,10 @@ class MovieController extends Controller
         $movie->category_id = $data['category_id'];
         $movie->genre_id = $data['genre_id'];
         $movie->country_id = $data['country_id'];
+        $movie->time = $data['time'];
         $movie->ngaytao = Carbon::now('Asia/Ho_Chi_Minh');
         $movie->ngaycapnhat = Carbon::now('Asia/Ho_Chi_Minh');
+
         //thêm hình ảnh
         $get_image = $request->file('image');
 
@@ -131,6 +143,7 @@ class MovieController extends Controller
         $movie->category_id = $data['category_id'];
         $movie->genre_id = $data['genre_id'];
         $movie->country_id = $data['country_id'];
+        $movie->time = $data['time'];
         $movie->ngaycapnhat = Carbon::now('Asia/Ho_Chi_Minh');
         
         //thêm hình ảnh

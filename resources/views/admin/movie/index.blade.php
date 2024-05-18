@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <a href="{{route('movie.create')}}" class="btn btn-primary">Quản lý phim</a>
 
     <table class="table" id="tablephim">
@@ -22,6 +22,8 @@
                 <th scope="col">Quốc gia</th>
                 <th scope="col">Ngày tạo</th>
                 <th scope="col">Ngày cập nhật</th>
+                <th scope="col">Năm</th>
+                <th scope="col">Thời lượng</th>
                 <th scope="col">Quản lý</th>
             </tr>
         </thead>
@@ -51,7 +53,16 @@
                 <td>{{ $cate->country->title }}</td>
                 <td>{{ $cate->ngaytao }}</td>
                 <td>{{ $cate->ngaycapnhat }}</td>
-
+                <td>
+                    <select class="select-year" name="year" id="{{ $cate->id }}">
+                        @for ($year = 1990; $year <= 2024; $year++)
+                            <option value="{{ $year }}" {{ isset($cate->year) && $cate->year == $year ? 'selected' : '' }}>
+                                {{ $year }}
+                            </option>
+                        @endfor
+                    </select>
+                </td>
+                <td>{{ $cate->time }} Phút</td>
                 <td>
                     <!-- Nút Xóa -->
                     <form id="delete-form-{{ $cate->id }}" action="{{ route('movie.destroy', $cate) }}" method="POST">
