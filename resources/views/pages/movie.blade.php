@@ -95,6 +95,27 @@
                            </article>
                         </div>
                      </div>
+                     <div class="section-bar clearfix">
+                        <h2 class="section-title"><span style="color:#ffed4d">Từ khóa cho phim</span></h2>
+                     </div>
+                     <div class="entry-content htmlwrap clearfix">
+                        <div class="video-item halim-entry-box">
+                           <article id="post-38424" class="item-content">
+                              @if ($movie->tags != NULL)
+                                 @php
+                                    $tags = array();
+                                    $tags = explode(',', $movie->tags);
+                                 @endphp
+
+                                 @foreach($tags as $key => $tag)
+                                    <a href="{{url('tag/'.$tag)}}">{{$tag}},</a>
+                                 @endforeach
+                              @else
+                                 {{$movie->title}}
+                              @endif
+                           </article>
+                        </div>
+                     </div>
                   </div>
                </section>
                <section class="related-movies">

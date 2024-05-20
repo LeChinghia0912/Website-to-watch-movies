@@ -11,7 +11,8 @@
                 <th scope="col">Tiêu đề</th>
                 <th scope="col">Tên tiếng anh</th>
                 <th scope="col">Hình ảnh</th>
-                <th scope="col">Mô tả</th>
+                {{-- <th scope="col">Mô tả</th> --}}
+                <th scope="col">Tags</th>
                 <th scope="col">Slug</th>
                 <th scope="col">Trạng thái</th>
                 <th scope="col">Danh mục</th>
@@ -34,7 +35,8 @@
                 <td>{{ $cate->title }}</td>
                 <td>{{ $cate->name_eng }}</td>
                 <td><img src="{{asset('uploads/movie/'.$cate->image)}}" width="150" height="200"></td>
-                <td>{{ $cate->description }}</td>
+                {{-- <td>{{ $cate->description }}</td> --}}
+                <td>{{ $cate->tags }}</td>
                 <td>{{ $cate->slug }}</td>
                 <td>
                     {{ $cate->status ? 'Hiển thị' : 'Không hiển thị' }}

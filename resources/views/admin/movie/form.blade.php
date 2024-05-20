@@ -51,6 +51,8 @@
                                 >
                                 <label for="description">Mô tả</label>
                                 <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description" required></textarea>
+                                <label>Tags</label>
+                                <textarea type="text" name="tags" class="form-control" placeholder="Nhập vào dữ liệu..." id="tags"></textarea>
                                 <label for="status">Trạng thái:</label>
                                 <select name="status" id="status" class="form-control">
                                     <option value="1">Hiển thị</option>
@@ -94,7 +96,7 @@
                                     @endforeach
                                 </select>
                                 <label>Thời lượng</label>
-                                <input type="text"  name="title" class="form-control" placeholder="Nhập vào dữ liệu..." required>
+                                <input type="text"  name="time" class="form-control" placeholder="Nhập vào dữ liệu..." value="{{isset($movie) ? $movie->time: ''}}" required>
                                 <label>Hình ảnh minh họa</label>
                                 <input type="file" name="image" id="image" placeholder="hình ảnh" class="form-control">
                             </div>
@@ -122,6 +124,8 @@
                                 >                                              
                                 <label for="description">Mô tả</label>
                                 <textarea type="text" name="description" class="form-control" placeholder="Nhập vào dữ liệu..." id="description" required>{{ $movie->description }}</textarea>
+                                <label>Tags</label>
+                                <textarea type="text" name="tags" class="form-control" placeholder="Nhập vào dữ liệu..." id="tags">{{ $movie->tags }}</textarea>
                                 <label for="status">Trạng thái:</label>
                                 <select name="status" id="status" class="form-control">
                                     <option value="1" {{ $movie->status == 1 ? 'selected' : '' }}>Hiển thị</option>
