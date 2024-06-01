@@ -25,6 +25,7 @@
                 <th scope="col">Ngày cập nhật</th>
                 <th scope="col">Năm</th>
                 <th scope="col">Thời lượng</th>
+                <th scope="col">Top View</th>
                 <th scope="col">Quản lý</th>
             </tr>
         </thead>
@@ -65,6 +66,14 @@
                     </select>
                 </td>
                 <td>{{ $cate->time }} Phút</td>
+                <td>
+                    <select class="select-topview" name="topview" id="{{ $cate->id }}">
+                        <option value="0" {{ isset($cate->topview) && $cate->topview == 0 ? 'selected' : '' }}>Ngày</option>
+                        <option value="1" {{ isset($cate->topview) && $cate->topview == 1 ? 'selected' : '' }}>Tuần</option>
+                        <option value="2" {{ isset($cate->topview) && $cate->topview == 2 ? 'selected' : '' }}>Tháng</option>
+                    </select>
+                </td>
+                
                 <td>
                     <!-- Nút Xóa -->
                     <form id="delete-form-{{ $cate->id }}" action="{{ route('movie.destroy', $cate) }}" method="POST">

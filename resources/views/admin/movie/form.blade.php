@@ -97,6 +97,12 @@
                                 </select>
                                 <label>Thời lượng</label>
                                 <input type="text"  name="time" class="form-control" placeholder="Nhập vào dữ liệu..." value="{{isset($movie) ? $movie->time: ''}}" required>
+                                <label>Top view:</label>
+                                <select name="topview" id="topview" class="form-control">
+                                    <option value="0">Ngày</option>
+                                    <option value="1">Tuần</option>
+                                    <option value="2">Tháng</option>
+                                </select>
                                 <label>Hình ảnh minh họa</label>
                                 <input type="file" name="image" id="image" placeholder="hình ảnh" class="form-control">
                             </div>
