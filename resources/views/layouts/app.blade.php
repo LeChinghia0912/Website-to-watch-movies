@@ -99,7 +99,6 @@
             $('.select-year').change(function() {
                 var year = $(this).find(':selected').val();
                 var id_phim = $(this).attr('id');
-    
                 $.ajax({
                     url: "{{ url('/update-year-phim') }}",
                     method: "GET",
@@ -118,6 +117,33 @@
             });
         });
     </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.select-season').change(function() {
+                var season = $(this).find(':selected').val();
+                var id_phim = $(this).attr('id');
+                var _token = $('input[name="_token"]').val();
+
+                $.ajax({
+                    url: "{{ url('/update-season-phim') }}",
+                    method: "GET",
+                    data: { season: season, id_phim: id_phim ,_token: _token},
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Thay đổi năm phim theo season' + season + ' thành công!');
+                        } else {
+                            alert('Đã có lỗi xảy ra, vui lòng thử lại!');
+                        }
+                    },
+                    error: function() {
+                        alert('Đã có lỗi xảy ra, vui lòng thử lại!');
+                    }
+                });
+            });
+        });
+    </script>
+
     <script type="text/javascript">
         $('.select-topview').change(function() {
             var topview = $(this).find(':selected').val();

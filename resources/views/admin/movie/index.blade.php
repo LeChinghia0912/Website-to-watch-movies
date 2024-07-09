@@ -24,6 +24,7 @@
                 <th scope="col">Ngày tạo</th>
                 <th scope="col">Ngày cập nhật</th>
                 <th scope="col">Năm</th>
+                <th scope="col">Season</th>
                 <th scope="col">Thời lượng</th>
                 <th scope="col">Top View</th>
                 <th scope="col">Quản lý</th>
@@ -48,7 +49,9 @@
                     {{ $cate->phim_hot ? 'Có' : 'Không' }}
                 </td>
                 <td>
-                    {{ $cate->resolution == 0 ? 'HD' : ($cate->resolution == 1 ? 'SD' : ($cate->resolution == 2 ? 'HDCam' : ($cate->resolution == 3 ? 'Cam' : 'FullHD'))) }}
+                    {{ $cate->resolution == 0 ? 'HD' : ($cate->resolution == 1 ? 'SD' : 
+                    ($cate->resolution == 2 ? 'HDCam' : ($cate->resolution == 3 ? 'Cam' : 
+                    ($cate->resolution == 4 ? 'FullHD' : 'Trailer')))) }}
                 </td>
                 <td>
                     {{ $cate->subtitle == 0 ? 'VietSub' : ($cate->subtitle == 1 ? 'Thuyết minh' : 'Phụ đề') }}
@@ -56,14 +59,31 @@
                 <td>{{ $cate->country->title }}</td>
                 <td>{{ $cate->ngaytao }}</td>
                 <td>{{ $cate->ngaycapnhat }}</td>
+                {{-- Năm của phim --}}
                 <td>
-                    <select class="select-year" name="year" id="{{ $cate->id }}">
-                        @for ($year = 1990; $year <= 2024; $year++)
-                            <option value="{{ $year }}" {{ isset($cate->year) && $cate->year == $year ? 'selected' : '' }}>
-                                {{ $year }}
-                            </option>
-                        @endfor
-                    </select>
+                    <form method="POST">
+                        @csrf
+                        <select class="select-year" name="year" id="{{ $cate->id }}">
+                            @for ($year = 1990; $year <= 2024; $year++)
+                                <option value="{{ $year }}" {{ isset($cate->year) && $cate->year == $year ? 'selected' : '' }}>
+                                    {{ $year }}
+                                </option>
+                            @endfor
+                        </select>
+                    </form>
+                </td>
+                {{-- Season Phim --}}
+                <td>
+                    <form method="POST">
+                        @csrf
+                        <select class="select-season" name="season" id="{{ $cate->id }}">
+                            @for ($season = 0; $season <= 20; $season++)
+                                <option value="{{ $season }}" {{ isset($cate->season) && $cate->season == $season ? 'selected' : '' }}>
+                                    {{ $season }}
+                                </option>
+                            @endfor
+                        </select>
+                    </form>
                 </td>
                 <td>{{ $cate->time }} Phút</td>
                 <td>

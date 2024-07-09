@@ -31,6 +31,16 @@ class MovieController extends Controller
         return response()->json(['success' => true]);
     }
 
+    public function update_season(Request $request)
+    {
+        $data = $request->all();
+        $movie = Movie::find($data['id_phim']);
+        $movie->season = $data['season'];
+        $movie->save();
+
+        return response()->json(['success' => true]);
+    }
+
     public function update_topview(Request $request)
     {
         $data = $request->all();
@@ -97,9 +107,11 @@ class MovieController extends Controller
                 $text = 'HDCam';
             } elseif ($mov->resolution == 3) {
                 $text = 'Cam';
-            } else{
+            } elseif ($mov->resolution == 4){
                 $text = 'FullHD';
-            } 
+            } else {
+                $text = 'Trailer';
+            }
             $output .= '<div class="item">
                     <a href="' . url('phim/' . $mov->slug) . '" title="' . $mov->title . '">
                         <div class="item-link">
@@ -143,6 +155,7 @@ class MovieController extends Controller
         $movie = new Movie();
         $movie->title = $data['title'];
         $movie->name_eng = $data['name_eng'];
+        $movie->trailer = $data['trailer'];
         $movie->phim_hot = $data['phim_hot'];
         $movie->resolution = $data['resolution'];
         $movie->subtitle = $data['subtitle'];
@@ -229,6 +242,7 @@ class MovieController extends Controller
         $movie->resolution = $data['resolution'];
         $movie->subtitle = $data['subtitle'];
         $movie->name_eng = $data['name_eng'];
+        $movie->trailer = $data['trailer'];
         $movie->slug = $data['slug'];
         $movie->description = $data['description'];
         $movie->tags = $data['tags'];

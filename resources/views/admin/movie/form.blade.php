@@ -39,6 +39,15 @@
                                         placeholder="Nhập vào dữ liệu..." 
                                         id="name_eng"
                                         required>
+                                    <label>Trailer</label>
+                                    <input 
+                                        type="text" 
+                                        value="{{isset($movie) ? $movie->trailer: ''}}" 
+                                        name="trailer" 
+                                        class="form-control" 
+                                        placeholder="Nhập vào dữ liệu..." 
+                                        id="trailer"
+                                        required>
                                 <label for="slug">Slug</label>
                                 <input 
                                     type="slug" 
@@ -82,6 +91,7 @@
                                     <option value="2">HDCam</option>
                                     <option value="3">Cam</option>
                                     <option value="4">FulHD</option>
+                                    <option value="5">Trailer</option>
                                 </select>
                                 <label for="subtitle">Phụ đề</label>
                                 <select name="subtitle" id="subtitle" class="form-control" value="{{isset($movie) ? $movie->subtitle: ''}}">
@@ -118,6 +128,8 @@
                                 <input type="text" value="{{isset($movie) ? $movie->title : ''}} " onkeyup="ChangeToSlug()" name="title" class="form-control" placeholder="Nhập vào dữ liệu..." id="slug" required>
                                 <label for="title">Tên tiếng anh</label>
                                 <input type="text" value="{{isset($movie) ? $movie->name_eng : ''}} "  name="name_eng" class="form-control" placeholder="Nhập vào dữ liệu..." id="name_eng" required>
+                                <label for="title">Trailer</label>
+                                <input type="text" value="{{isset($movie) ? $movie->trailer : ''}} "  name="trailer" class="form-control" placeholder="Nhập vào dữ liệu..." id="trailer" required>
                                 <label for="slug">Slug</label>
                                 <input 
                                     type="slug" 
@@ -161,6 +173,7 @@
                                     <option value="2" {{ $movie->resolution == 2 ? 'selected' : '' }}>HDCam</option>
                                     <option value="3" {{ $movie->resolution == 3 ? 'selected' : '' }}>Cam</option>
                                     <option value="4" {{ $movie->resolution == 4 ? 'selected' : '' }}>FullHD</option>
+                                    <option value="5" {{ $movie->resolution == 5 ? 'selected' : '' }}>Trailer</option>
                                 </select>
                                 <label>Định dạng</label>
                                 <select name="subtitle" id="subtitle" class="form-control">

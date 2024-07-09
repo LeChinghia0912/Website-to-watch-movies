@@ -34,20 +34,29 @@
                                     HDCam
                                  @elseif($mov->resolution == 3)
                                     Cam                                 
-                                 @else
+                                 @elseif($mov->resolution == 4)
                                     FullHD
+                                 @else
+                                    Trailer
                                  @endif
                               </span>
                               <span class="episode">
                                  <i class="fa fa-play" aria-hidden="true"></i>
-                                    @if ($mov->subtitle == 0)
-                                    VietSub
-                                    @elseif($mov->subtitle == 1)
-                                       Thuyết minh
-                                    @else
-                                       Phụ đề
-                                    @endif
-                              </span> 
+                                 @if ($mov->subtitle == 0)
+                                     VietSub
+                                 @elseif($mov->subtitle == 1)
+                                     Thuyết minh
+                                 @else
+                                     Phụ đề
+                                 @endif
+                                 {{-- Hiển thị season của phim --}}
+                                 @if ($mov->season == 0)
+                                     - No Season
+                                 @else
+                                     - Season.{{$mov->season}}
+                                 @endif
+                             </span>
+                              
                               <div class="icon_overlay"></div>
                               <div class="halim-post-title-box">
                                  <div class="halim-post-title ">

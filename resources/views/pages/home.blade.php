@@ -28,8 +28,10 @@
                                  HDCam
                               @elseif($hot->resolution == 3)
                                  Cam                                 
-                              @else
+                              @elseif($hot->resolution == 4)
                                   FullHD
+                              @else
+                                 Trailer
                               @endif
                            </span>
                            <span class="episode">
@@ -40,6 +42,12 @@
                                     Thuyết minh
                                  @else
                                     Phụ đề
+                                 @endif
+                                 {{-- Hiển thị season của phim --}}
+                                 @if ($hot->season == 0)
+                                     - No Season
+                                 @else
+                                     - Season.{{$hot->season}}
                                  @endif
                            </span> 
                            <div class="icon_overlay"></div>
@@ -92,8 +100,10 @@
                                     HDCam
                                  @elseif($mov->resolution == 3)
                                     Cam                                 
-                                 @else
+                                 @elseif($mov->resolution == 4)
                                     FullHD
+                                 @else
+                                    Trailer
                                  @endif
                               </span>
                            <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
